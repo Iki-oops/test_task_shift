@@ -1,0 +1,2 @@
+class SalaryOutOfRange(Exception):
+    pass

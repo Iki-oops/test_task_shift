@@ -1,10 +1,11 @@
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI
 from fastapi_users import FastAPIUsers
 
 from src.auth.base_config import auth_backend
 from src.auth.models import User
 from src.auth.manager import get_user_manager
 from src.auth.schemas import UserRead, UserCreate
+from src.employee_position_level.routers import router as router_position
 from src.employee_progression.routers import router as router_progressions
 
 fastapi_users = FastAPIUsers[User, int](
@@ -29,3 +30,4 @@ app.include_router(
 )
 
 app.include_router(router_progressions)
+app.include_router(router_position)

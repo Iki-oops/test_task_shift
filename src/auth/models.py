@@ -45,7 +45,7 @@ class User(SQLAlchemyBaseUserTable[int], Base):
         ForeignKey(employee_progression.c.id), nullable=True
     )
     progression: Mapped['EmployeeProgression'] = relationship(
-        back_populates='employee', uselist=False
+        back_populates='employee',
     )
 
 
