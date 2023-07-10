@@ -10,7 +10,7 @@ class Employee(BaseModel):
     salary: int = Field(ge=0)
 
     class Config:
-        allow_population_by_field_name = True
+        populate_by_name = True
 
 
 class PositionLevelBase(BaseModel):
@@ -20,7 +20,7 @@ class PositionLevelBase(BaseModel):
     employees: list[Employee] = []
 
     class Config:
-        allow_population_by_field_name = True
+        populate_by_name = True
 
 
 class PositionLevelRead(PositionLevelBase):

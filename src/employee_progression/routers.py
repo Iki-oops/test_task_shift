@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, status
 from fastapi.responses import JSONResponse
+from pydantic_core import ValidationError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.auth.base_config import current_user, current_superuser
@@ -24,7 +25,9 @@ async def get_progressions(offset: int = 0,
                            user: User = Depends(current_superuser),
                            session: AsyncSession = Depends(get_async_session)):
     result = await get_employees_progressions(session, offset, limit)
+    print(result)
     result = [ProgressionRead(**row) for row in result]
+    print(result)
 
     return {
         'status': 'success',
@@ -72,9 +75,16 @@ async def add_progression(
 async def get_my_progression(
         user=Depends(current_user),
         session: AsyncSession = Depends(get_async_session)):
-    result = await get_employee_progression(user, session)
-    return {
-        'status': 'success',
-        'data': ProgressionRead(**result),
-        'detail': None
-    }
+    try:
+        result = await get_employee_progression(user, session)
+        return {
+            'status': 'success',
+            'data': ProgressionRead(**result),
+            'detail': None
+        }
+    except ValidationError:
+        return {
+            'status': 'success',
+            'data': [],
+            'detail': None
+        }

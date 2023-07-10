@@ -20,7 +20,7 @@ router = APIRouter(
 async def get_position_levels(
         offset: int = 0,
         limit: int = 10,
-        user=Depends(current_superuser),
+        # user=Depends(current_superuser),
         session: AsyncSession = Depends(get_async_session)):
     result = await get_employee_position_levels(session, offset, limit)
 
@@ -34,7 +34,7 @@ async def get_position_levels(
 @router.get('/{position_level}')
 async def get_position_level(
         position_level: str,
-        user=Depends(current_superuser),
+        # user=Depends(current_superuser),
         session: AsyncSession = Depends(get_async_session)):
     try:
         result = await get_employee_position_level(session, position_level)

@@ -1,21 +1,12 @@
-# Тестовое задание ШИФТ
-Ссылка на задание: https://drive.google.com/file/d/1aNctqjsy0IuyqA-d7rsTz4-zwvLhebSD/view
+# test task
 
-## Установка и запуск:
-- [ ] Клонируйте репозиторий на свой локальный компьютер:
-    ```
-    git clone https://gitlab.com/shift1392926/test-task.git
-    ```
-- [ ] Перейдите в директорию проекта:
-    ```
-    cd test-task
-    ```
-- [ ] Создайте виртуальное окружение и установите зависимости:
-    ```
-    python -m venv venv
-    
-    ```
 
+
+## Getting started
+
+To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+
+Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
 
 ## Add your files
 
