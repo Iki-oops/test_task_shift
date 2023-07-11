@@ -1,7 +1,9 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 
 
 class Employee(BaseModel):
+    model_config = ConfigDict(populate_by_name=True)
+
     id: int
     username: str
     email: str
@@ -9,18 +11,14 @@ class Employee(BaseModel):
     last_name: str = Field(alias='lastName')
     salary: int = Field(ge=0)
 
-    class Config:
-        populate_by_name = True
-
 
 class PositionLevelBase(BaseModel):
+    model_config = ConfigDict(populate_by_name=True)
+
     position_level: str
     min_salary: int = Field(ge=0, alias='minSalary')
     max_salary: int = Field(ge=0, alias='maxSalary')
     employees: list[Employee] = []
-
-    class Config:
-        populate_by_name = True
 
 
 class PositionLevelRead(PositionLevelBase):

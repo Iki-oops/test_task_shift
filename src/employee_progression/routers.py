@@ -25,9 +25,7 @@ async def get_progressions(offset: int = 0,
                            user: User = Depends(current_superuser),
                            session: AsyncSession = Depends(get_async_session)):
     result = await get_employees_progressions(session, offset, limit)
-    print(result)
     result = [ProgressionRead(**row) for row in result]
-    print(result)
 
     return {
         'status': 'success',
